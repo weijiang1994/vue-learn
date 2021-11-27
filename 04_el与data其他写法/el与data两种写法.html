@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        // el: "#app",
+        <!-- Vue所管理的函数一定不要写成箭头函数，一旦写成箭头函数this就拿不到Vue实例对象了 ()=>{} -->
+        data(){
+            return {
+                message: "Hello, Vuejs!"
+            }
+        }
+    })
+    console.log(app)
+    setTimeout(function () {
+        app.$mount('#app')
+    }, 1000)
+</script>
+</body>
+</html>

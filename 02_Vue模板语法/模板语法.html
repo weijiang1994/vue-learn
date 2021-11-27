@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1>插值语法</h1>
+    <h3>Hello, {{name}}!</h3>
+    <hr>
+    <h1>指令语法</h1>
+    <a v-bind:href="url">点我去尚硅谷学习1</a>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false
+    const app = new Vue({
+        el: "#app",
+        data:{
+            name: "jack",
+            url: "https://2dogz.cn"
+        }
+    })
+
+</script>
+</body>
+</html>

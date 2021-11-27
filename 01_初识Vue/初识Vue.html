@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识vue</title>
+    <script src="../js/vue.js" type="text/javascript"></script>
+    <style>
+        button{
+            height: 30px;
+            min-width: 80px;
+            border: none;
+            background: #aaccee;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h1>Hello, {{message}}</h1>
+        <button @click="changeName">改变</button>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false
+    const app = new Vue({
+        el: '#root',
+        data: {
+            message: 'Google!'
+        },
+        methods:{
+            changeName(){
+                if (this.message === 'Google!'){
+                    return this.message = 'Microsoft!'
+                }
+                return this.message = 'Google!'
+            },
+        }
+    })
+</script>
+</html>

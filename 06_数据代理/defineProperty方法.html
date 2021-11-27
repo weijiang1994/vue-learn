@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false
+    let number = 18
+    let person = {
+        name: "张三",
+        sex: '男',
+    }
+
+    // defineProperty定义的key默认不能参与遍历
+    Object.defineProperty(person, 'age',{
+        // value: number,
+        // enumerable: true, // 控制属性是否可以枚举，默认值为false
+        // writable: true, // 控制属性可以被修改
+        // configurable: true, // 控制属性是否可以被删除
+
+        // 当读取person的age属性，get函数就会被调用，返回值就是age的值
+        get(){
+            console.log('有人读取age了')
+            return number
+        },
+
+        set(v) {
+            console.log('有人设置了number值')
+            number = v
+        }
+    })
+
+    console.log(person)
+</script>
+</body>
+</html>

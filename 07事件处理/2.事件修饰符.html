@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 20px;
+        }
+
+        .demo1 {
+            height: 50px;
+            background: #aaccee;
+        }
+
+        .once {
+            background: aquamarine;
+            height: 35px;
+            border-radius: 5px;
+            border: none;
+            color: gray;
+        }
+
+        .once:hover {
+            background: aqua;
+        }
+
+        .box1 {
+            padding: 5px;
+            background: cadetblue;
+        }
+
+        .box2 {
+            padding: 5px;
+            background: aqua;
+        }
+
+        .list {
+            width: 200px;
+            height: 200px;
+            background: orange;
+            overflow: auto;
+        }
+
+        li {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<!--
+    Vue中的事件修饰符：
+        1. prevent: 阻止默认事件
+        2. stop: 阻止事件冒泡
+        3. once: 事件只会触发一次
+        4. capture: 使用事件的捕获模式
+        5. self: 只有event.target是当前操作的元素的时候才会触发
+        6. passive: 事件的默认行为立即执行，无需等待事件回调执行完毕
+-->
+<div id="app">
+    <h2>{{message}}</h2>
+    <!-- 阻止默认事件 -->
+    <a href="https://2dogz.cn" @click.prevent="showInfo">点我提示信息</a>
+    <!-- 阻止事件冒泡 -->
+    <div class="demo1" @click="showInfo">
+        <button @click.stop="showInfo">点我提示信息</button>
+        <!--    修饰符可以连续写    -->
+        <!--        <a  href="https://2dogz.cn" @click.stop.prevent="showInfo">点我提示信息</a>-->
+    </div>
+    <!-- 事件只触发一次 -->
+    <button class="once" @click.once="showInfo">只触发一次事件</button>
+    <!-- 使用事件的捕获模式 -->
+    <div class="box1" @click.capture="showMsg(1)">
+        div1
+        <div class="box2" @click="showMsg(2)">
+            div2
+        </div>
+    </div>
+    <!-- 只有event.target是当前操作的元素的时候才会触发 -->
+    <div class="demo1" @click.self="showInfo">
+        <button @click="showInfo">点我提示信息</button>
+    </div>
+    <!--  事件的默认行为立即执行，无需等待事件回调执行完毕  -->
+    <ul @wheel.passive="showScroll" class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello, vuejs!",
+        },
+        methods: {
+            showInfo(e) {
+                alert('同学你好！')
+            },
+            showMsg(msg) {
+                console.log('同学你好！' + msg)
+            },
+            showScroll() {
+                for (let i = 0; i < 100000; i++) {
+                    console.log('#')
+                }
+                console.log('累坏了')
+            }
+        }
+    })
+</script>
+</body>
+</html>

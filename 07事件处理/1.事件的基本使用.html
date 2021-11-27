@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>欢迎来到{{name}}学习！</h2>
+    <button v-on:click="hint1">点我提示1</button>
+    <button @click="hint2($event, '张三')">点我提示2</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            name: "Hello, vuejs!",
+        },
+        methods: {
+            hint1(event) {
+                // console.log(event.target.innerText) // methods中的方法第一个参数默认为event对象
+                // console.log(this) //此处的this就是vue实例对象
+                alert('同学你好！')
+            },
+            hint2(event, name){
+                alert(`${name}同学你好！`)
+            }
+        }
+    })
+</script>
+</body>
+</html>

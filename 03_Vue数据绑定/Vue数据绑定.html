@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+</head>
+<body>
+<div id="app">
+    单向数据绑定: <input type="text" v-bind:value="name"> <br>
+    单向数据绑定: <input type="text" v-model:value="name">
+    <h3>简写方式</h3>
+    <!-- v-model默认绑定的就是value值所以可以简写为v-model -->
+    单向数据绑定: <input type="text" :value="name"> <br>
+    单向数据绑定: <input type="text" v-model="name">
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false
+    const app = new Vue({
+        el: "#app",
+        data:{
+            name: '二狗狗子'
+        }
+    })
+</script>
+</body>
+</html>
